@@ -42,7 +42,7 @@ resource "azurerm_app_service" "webapp" {
   depends_on=[azurerm_app_service_plan.app_plan1000]
 }
 
-resource "azurerm_sql_server" "app_server_6008089" {
+resource "azurerm_sql_server" "app_server" {
   name                         = "appserver6008089"
   resource_group_name          = azurerm_resource_group.app_grp.name
   location                     = "North Europe"  
@@ -57,7 +57,7 @@ resource "azurerm_sql_database" "app_db" {
   location            = "North Europe"  
   server_name         = azurerm_sql_server.app_server_6008089.name
    depends_on = [
-     azurerm_sql_server.app_server_6008089
+     azurerm_sql_server.app_server
    ]
 }
 
@@ -68,7 +68,7 @@ resource "azurerm_sql_firewall_rule" "app_server_firewall_rule_Azure_services" {
   start_ip_address    = "0.0.0.0"
   end_ip_address      = "0.0.0.0"
   depends_on=[
-    azurerm_sql_server.app_server_6008089
+    azurerm_sql_server.app_server
   ]
 }
 
@@ -79,6 +79,6 @@ resource "azurerm_sql_firewall_rule" "app_server_firewall_rule_Client_IP" {
   start_ip_address    = "4.246.169.117"
   end_ip_address      = "4.246.169.117"
   depends_on=[
-    azurerm_sql_server.app_server_6008089
+    azurerm_sql_server.app_server
   ]
 }
