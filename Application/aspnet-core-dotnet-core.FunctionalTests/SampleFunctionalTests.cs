@@ -34,7 +34,7 @@ namespace SampleWebApplication.FunctionalTests
         [TestMethod]
         public void SampleFunctionalTest1()
         {
-            var webAppUrl = "https://multistagepipelines123.azurewebsites.net";
+            var webAppUrl = "https://webapp5539050.azurewebsites.net";
 
             var startTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
             var endTimstamp = startTimestamp + 60 * 10;
